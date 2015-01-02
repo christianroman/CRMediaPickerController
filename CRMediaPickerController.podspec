@@ -1,6 +1,6 @@
 Pod::Spec.new do |spec|
   spec.name         = 'CRMediaPickerController'
-  spec.version      = '0.1'
+  spec.version      = '0.0.1'
   spec.license      = 'MIT'
   spec.homepage     = 'https://github.com/chroman/CRMediaPickerController'
   spec.author       =  { 'Christian Roman' => 'chroman16@gmail.com' }
