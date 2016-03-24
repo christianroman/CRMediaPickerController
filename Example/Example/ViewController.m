@@ -157,7 +157,7 @@
 
 #pragma mark - CPDMediaPickerControllerDelegate
 
-- (void)CRMediaPickerController:(CRMediaPickerController *)mediaPickerController didFinishPickingAsset:(ALAsset *)asset error:(NSError *)error
+- (void)mediaPickerController:(CRMediaPickerController *)mediaPickerController didFinishPickingAsset:(ALAsset *)asset error:(NSError *)error
 {
     if (!error) {
         
@@ -196,7 +196,7 @@
     }
 }
 
-- (void)CRMediaPickerControllerDidCancel:(CRMediaPickerController *)mediaPickerController
+- (void)mediaPickerControllerDidCancel:(CRMediaPickerController *)mediaPickerController
 {
     NSLog(@"%s", __PRETTY_FUNCTION__);
 }

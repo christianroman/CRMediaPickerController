@@ -82,9 +82,9 @@
 
 - (void)dismiss
 {
-    if (self.delegate && [self.delegate respondsToSelector:@selector(CRMediaPickerControllerDidCancel:)]) {
+    if (self.delegate && [self.delegate respondsToSelector:@selector(mediaPickerControllerDidCancel:)]) {
         [self.imagePickerController.presentingViewController dismissViewControllerAnimated:YES completion:^{
-            [self.delegate CRMediaPickerControllerDidCancel:self];
+            [self.delegate mediaPickerControllerDidCancel:self];
         }];
     } else {
         [self.imagePickerController.presentingViewController dismissViewControllerAnimated:YES completion:NULL];
@@ -361,8 +361,8 @@
         
         if (group.numberOfAssets == 0) {
             
-            if (self.delegate && [self.delegate respondsToSelector:@selector(CRMediaPickerController:didFinishPickingAsset:error:)]) {
-                [self.delegate CRMediaPickerController:self didFinishPickingAsset:nil error:nil];
+            if (self.delegate && [self.delegate respondsToSelector:@selector(mediaPickerController:didFinishPickingAsset:error:)]) {
+                [self.delegate mediaPickerController:self didFinishPickingAsset:nil error:nil];
             }
             
         } else {
@@ -372,8 +372,8 @@
                     return;
                 }
                 
-                if (self.delegate && [self.delegate respondsToSelector:@selector(CRMediaPickerController:didFinishPickingAsset:error:)]) {
-                    [self.delegate CRMediaPickerController:self didFinishPickingAsset:asset error:nil];
+                if (self.delegate && [self.delegate respondsToSelector:@selector(mediaPickerController:didFinishPickingAsset:error:)]) {
+                    [self.delegate mediaPickerController:self didFinishPickingAsset:asset error:nil];
                 }
                 
                 *innerStop = YES;
@@ -385,8 +385,8 @@
         
     } failureBlock:^(NSError *error) {
         
-        if (self.delegate && [self.delegate respondsToSelector:@selector(CRMediaPickerController:didFinishPickingAsset:error:)]) {
-            [self.delegate CRMediaPickerController:self didFinishPickingAsset:nil error:error];
+        if (self.delegate && [self.delegate respondsToSelector:@selector(mediaPickerController:didFinishPickingAsset:error:)]) {
+            [self.delegate mediaPickerController:self didFinishPickingAsset:nil error:error];
         }
         
     }];
@@ -407,8 +407,8 @@
     } else if ([buttonTitle isEqualToString:NSLocalizedString(@"Saved Photos", nil)]) {
         sourceType = UIImagePickerControllerSourceTypeSavedPhotosAlbum;
     } else if ([buttonTitle isEqualToString:NSLocalizedString(@"Cancel", nil)]) {
-        if (self.delegate && [self.delegate respondsToSelector:@selector(CRMediaPickerControllerDidCancel:)]) {
-            [self.delegate CRMediaPickerControllerDidCancel:self];
+        if (self.delegate && [self.delegate respondsToSelector:@selector(mediaPickerControllerDidCancel:)]) {
+            [self.delegate mediaPickerControllerDidCancel:self];
         }
         return;
     }
@@ -423,8 +423,8 @@
 - (void)imagePickerControllerDidCancel:(UIImagePickerController *)picker
 {
     [picker.presentingViewController dismissViewControllerAnimated:YES completion:^{
-        if (self.delegate && [self.delegate respondsToSelector:@selector(CRMediaPickerControllerDidCancel:)]) {
-            [self.delegate CRMediaPickerControllerDidCancel:self];
+        if (self.delegate && [self.delegate respondsToSelector:@selector(mediaPickerControllerDidCancel:)]) {
+            [self.delegate mediaPickerControllerDidCancel:self];
         }
     }];
 }
@@ -450,9 +450,9 @@
                         
                         [assetsLibrary assetForURL:assetURL resultBlock:^(ALAsset *asset) {
                             
-                            if (self.delegate && [self.delegate respondsToSelector:@selector(CRMediaPickerController:didFinishPickingAsset:error:)]) {
+                            if (self.delegate && [self.delegate respondsToSelector:@selector(mediaPickerController:didFinishPickingAsset:error:)]) {
                                 [picker.presentingViewController dismissViewControllerAnimated:YES completion:^{
-                                    [self.delegate CRMediaPickerController:self didFinishPickingAsset:asset error:nil];
+                                    [self.delegate mediaPickerController:self didFinishPickingAsset:asset error:nil];
                                 }];
                             } else {
                                 [picker.presentingViewController dismissViewControllerAnimated:YES completion:NULL];
@@ -460,9 +460,9 @@
                             
                         } failureBlock:^(NSError *err) {
                             
-                            if (self.delegate && [self.delegate respondsToSelector:@selector(CRMediaPickerController:didFinishPickingAsset:error:)]) {
+                            if (self.delegate && [self.delegate respondsToSelector:@selector(mediaPickerController:didFinishPickingAsset:error:)]) {
                                 [picker.presentingViewController dismissViewControllerAnimated:YES completion:^{
-                                    [self.delegate CRMediaPickerController:self didFinishPickingAsset:nil error:err];
+                                    [self.delegate mediaPickerController:self didFinishPickingAsset:nil error:err];
                                 }];
                             } else {
                                 [picker.presentingViewController dismissViewControllerAnimated:YES completion:NULL];
@@ -472,9 +472,9 @@
                         
                     } else {
                         
-                        if (self.delegate && [self.delegate respondsToSelector:@selector(CRMediaPickerController:didFinishPickingAsset:error:)]) {
+                        if (self.delegate && [self.delegate respondsToSelector:@selector(mediaPickerController:didFinishPickingAsset:error:)]) {
                             [picker.presentingViewController dismissViewControllerAnimated:YES completion:^{
-                                [self.delegate CRMediaPickerController:self didFinishPickingAsset:nil error:error];
+                                [self.delegate mediaPickerController:self didFinishPickingAsset:nil error:error];
                             }];
                         } else {
                             [picker.presentingViewController dismissViewControllerAnimated:YES completion:NULL];
@@ -488,9 +488,9 @@
                 
                 [assetsLibrary assetForURL:referenceURL resultBlock:^(ALAsset *asset) {
                     
-                    if (self.delegate && [self.delegate respondsToSelector:@selector(CRMediaPickerController:didFinishPickingAsset:error:)]) {
+                    if (self.delegate && [self.delegate respondsToSelector:@selector(mediaPickerController:didFinishPickingAsset:error:)]) {
                         [picker.presentingViewController dismissViewControllerAnimated:YES completion:^{
-                            [self.delegate CRMediaPickerController:self didFinishPickingAsset:asset error:nil];
+                            [self.delegate mediaPickerController:self didFinishPickingAsset:asset error:nil];
                         }];
                     } else {
                         [picker.presentingViewController dismissViewControllerAnimated:YES completion:NULL];
@@ -498,9 +498,9 @@
                     
                 } failureBlock:^(NSError *error) {
                     
-                    if (self.delegate && [self.delegate respondsToSelector:@selector(CRMediaPickerController:didFinishPickingAsset:error:)]) {
+                    if (self.delegate && [self.delegate respondsToSelector:@selector(mediaPickerController:didFinishPickingAsset:error:)]) {
                         [picker.presentingViewController dismissViewControllerAnimated:YES completion:^{
-                            [self.delegate CRMediaPickerController:self didFinishPickingAsset:nil error:error];
+                            [self.delegate mediaPickerController:self didFinishPickingAsset:nil error:error];
                         }];
                     } else {
                         [picker.presentingViewController dismissViewControllerAnimated:YES completion:NULL];
@@ -531,9 +531,9 @@
                     
                     [assetsLibrary assetForURL:assetURL resultBlock:^(ALAsset *asset) {
                         
-                        if (self.delegate && [self.delegate respondsToSelector:@selector(CRMediaPickerController:didFinishPickingAsset:error:)]) {
+                        if (self.delegate && [self.delegate respondsToSelector:@selector(mediaPickerController:didFinishPickingAsset:error:)]) {
                             [picker.presentingViewController dismissViewControllerAnimated:YES completion:^{
-                                [self.delegate CRMediaPickerController:self didFinishPickingAsset:asset error:nil];
+                                [self.delegate mediaPickerController:self didFinishPickingAsset:asset error:nil];
                             }];
                         } else {
                             [picker.presentingViewController dismissViewControllerAnimated:YES completion:NULL];
@@ -541,9 +541,9 @@
                         
                     } failureBlock:^(NSError *err) {
                         
-                        if (self.delegate && [self.delegate respondsToSelector:@selector(CRMediaPickerController:didFinishPickingAsset:error:)]) {
+                        if (self.delegate && [self.delegate respondsToSelector:@selector(mediaPickerController:didFinishPickingAsset:error:)]) {
                             [picker.presentingViewController dismissViewControllerAnimated:YES completion:^{
-                                [self.delegate CRMediaPickerController:self didFinishPickingAsset:nil error:err];
+                                [self.delegate mediaPickerController:self didFinishPickingAsset:nil error:err];
                             }];
                         } else {
                             [picker.presentingViewController dismissViewControllerAnimated:YES completion:NULL];
@@ -553,9 +553,9 @@
                     
                 } else {
                     
-                    if (self.delegate && [self.delegate respondsToSelector:@selector(CRMediaPickerController:didFinishPickingAsset:error:)]) {
+                    if (self.delegate && [self.delegate respondsToSelector:@selector(mediaPickerController:didFinishPickingAsset:error:)]) {
                         [picker.presentingViewController dismissViewControllerAnimated:YES completion:^{
-                            [self.delegate CRMediaPickerController:self didFinishPickingAsset:nil error:error];
+                            [self.delegate mediaPickerController:self didFinishPickingAsset:nil error:error];
                         }];
                     } else {
                         [picker.presentingViewController dismissViewControllerAnimated:YES completion:NULL];
@@ -569,9 +569,9 @@
             
             [assetsLibrary assetForURL:[info objectForKey:UIImagePickerControllerReferenceURL] resultBlock:^(ALAsset *asset) {
                 
-                if (self.delegate && [self.delegate respondsToSelector:@selector(CRMediaPickerController:didFinishPickingAsset:error:)]) {
+                if (self.delegate && [self.delegate respondsToSelector:@selector(mediaPickerController:didFinishPickingAsset:error:)]) {
                     [picker.presentingViewController dismissViewControllerAnimated:YES completion:^{
-                        [self.delegate CRMediaPickerController:self didFinishPickingAsset:asset error:nil];
+                        [self.delegate mediaPickerController:self didFinishPickingAsset:asset error:nil];
                     }];
                 } else {
                     [picker.presentingViewController dismissViewControllerAnimated:YES completion:NULL];
@@ -579,9 +579,9 @@
                 
             } failureBlock:^(NSError *error) {
                 
-                if (self.delegate && [self.delegate respondsToSelector:@selector(CRMediaPickerController:didFinishPickingAsset:error:)]) {
+                if (self.delegate && [self.delegate respondsToSelector:@selector(mediaPickerController:didFinishPickingAsset:error:)]) {
                     [picker.presentingViewController dismissViewControllerAnimated:YES completion:^{
-                        [self.delegate CRMediaPickerController:self didFinishPickingAsset:nil error:error];
+                        [self.delegate mediaPickerController:self didFinishPickingAsset:nil error:error];
                     }];
                 } else {
                     [picker.presentingViewController dismissViewControllerAnimated:YES completion:NULL];
@@ -624,8 +624,8 @@
 - (void)popoverControllerDidDismissPopover:(UIPopoverController *)popoverController
 {
     self.popoverController = nil;
-    if (self.delegate && [self.delegate respondsToSelector:@selector(CRMediaPickerControllerDidCancel:)]) {
-        [self.delegate CRMediaPickerControllerDidCancel:self];
+    if (self.delegate && [self.delegate respondsToSelector:@selector(mediaPickerControllerDidCancel:)]) {
+        [self.delegate mediaPickerControllerDidCancel:self];
     }
 }
 

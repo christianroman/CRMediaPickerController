@@ -131,16 +131,16 @@ If `sourceType` property has multiple sources, it presents a UIActionSheet with 
 
 ### Delegate Methods
 
-A `CRMediaPickerController` instance will return the selected media file back to `CRMediaPickerControllerDelegate`. The delegate contains methods very similar to the `UIImagePickerControllerDelegate`. Instead of returning one dictionary representing a single image the controller sends back the original `ALAsset` object which are easy to deal with.
+A `CRMediaPickerController` instance will return the selected media file back to `mediaPickerControllerDelegate`. The delegate contains methods very similar to the `UIImagePickerControllerDelegate`. Instead of returning one dictionary representing a single image the controller sends back the original `ALAsset` object which are easy to deal with.
 
 * **Finished Picking Asset**
 
-`- CRMediaPickerController:didFinishPickingAsset:error:`
+`- mediaPickerController:didFinishPickingAsset:error:`
 
 Tells the delegate that the picking process is done and the media file is ready to use.
 
 ```objc
-- (void)CRMediaPickerController:(CRMediaPickerController *)mediaPickerController didFinishPickingAsset:(ALAsset *)asset error:(NSError *)error;
+- (void)mediaPickerController:(CRMediaPickerController *)mediaPickerController didFinishPickingAsset:(ALAsset *)asset error:(NSError *)error;
 ```
 
 Parameters:
@@ -164,12 +164,12 @@ Parameters:
 
 * **Cancelled**
 
-`- CRMediaPickerControllerDidCancel:`
+`- mediaPickerControllerDidCancel:`
 
 Tells the delegate that the user cancelled the picking process.
 
 ```objc
-- (void)CRMediaPickerControllerDidCancel:(CRMediaPickerController *)mediaPickerController;
+- (void)mediaPickerControllerDidCancel:(CRMediaPickerController *)mediaPickerController;
 ```
 
 Parameters:
@@ -188,7 +188,7 @@ Parameters:
 ```objc
 #pragma mark - CPDMediaPickerControllerDelegate
 
-- (void)CRMediaPickerController:(CRMediaPickerController *)mediaPickerController didFinishPickingAsset:(ALAsset *)asset error:(NSError *)error
+- (void)mediaPickerController:(CRMediaPickerController *)mediaPickerController didFinishPickingAsset:(ALAsset *)asset error:(NSError *)error
 {
     if (!error) {
         
@@ -227,7 +227,7 @@ Parameters:
     }
 }
 
-- (void)CRMediaPickerControllerDidCancel:(CRMediaPickerController *)mediaPickerController
+- (void)mediaPickerControllerDidCancel:(CRMediaPickerController *)mediaPickerController
 {
     NSLog(@"%s", __PRETTY_FUNCTION__);
 }
