@@ -1,0 +1,30 @@
+{
+  "DVTSourceControlWorkspaceBlueprintPrimaryRemoteRepositoryKey" : "E78B529B3E29A73BEA7969FC7095F6CA65F46FD5",
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyRepositoryLocationsKey" : {
+
+  },
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyStatesKey" : {
+    "40069BF539098AEF7FE1C2D5534EA7025ADAA3D8" : 0,
+    "E78B529B3E29A73BEA7969FC7095F6CA65F46FD5" : 0
+  },
+  "DVTSourceControlWorkspaceBlueprintIdentifierKey" : "DB07EAAC-C230-425D-82CD-65FBC4DDE1AD",
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyPathsKey" : {
+    "40069BF539098AEF7FE1C2D5534EA7025ADAA3D8" : "",
+    "E78B529B3E29A73BEA7969FC7095F6CA65F46FD5" : "CRMediaPickerController\/"
+  },
+  "DVTSourceControlWorkspaceBlueprintNameKey" : "Example",
+  "DVTSourceControlWorkspaceBlueprintVersion" : 204,
+  "DVTSourceControlWorkspaceBlueprintRelativePathToProjectKey" : "Example\/Example.xcodeproj",
+  "DVTSourceControlWorkspaceBlueprintRemoteRepositoriesKey" : [
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "github.com:SnowdogApps\/SDForms.git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "40069BF539098AEF7FE1C2D5534EA7025ADAA3D8"
+    },
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "github.com:dulal0026\/CRMediaPickerController.git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "E78B529B3E29A73BEA7969FC7095F6CA65F46FD5"
+    }
+  ]
+}
