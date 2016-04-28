@@ -101,10 +101,8 @@
     UIImagePickerControllerSourceType imagePickerSourceType = [self imagePickerControllerSourceTypeFromMediaSourceType:sourceType];
     
     if (![UIImagePickerController isSourceTypeAvailable:imagePickerSourceType]) {
-        
-		NSString *photoLibraryNotAvailableMessage = NSLocalizedString(@"Photo Library not available", nil);
-        
-		if (imagePickerSourceType == UIImagePickerControllerSourceTypeCamera) {
+           NSString *photoLibraryNotAvailableMessage = NSLocalizedString(@"Photo Library not available", nil);
+           if (imagePickerSourceType == UIImagePickerControllerSourceTypeCamera) {
             
             UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:NSLocalizedString(@"Camera not available", nil)
                                                                 message:nil
@@ -133,7 +131,7 @@
             
         }
         return;
-	}
+    }
     
     UIImagePickerController *imagePickerController = [[UIImagePickerController alloc] init];
     imagePickerController.delegate = self;
@@ -202,9 +200,16 @@
         if ((UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad)) {//&& (sourceType == UIImagePickerControllerSourceTypePhotoLibrary)) {
             self.popoverController = [self makePopoverController:self.imagePickerController];
             self.popoverController.delegate = self;
-            
-            [self.popoverController presentPopoverFromRect:CGRectMake(400, 400, 100, 100) inView:self.delegate.view permittedArrowDirections:UIPopoverArrowDirectionAny animated:YES];
-            
+
+            UIPopoverController *popover = [[UIPopoverController alloc] initWithContentViewController:self.imagePickerController];
+            if ([self.imagePickerController respondsToSelector:@selector(popoverPresentationController)] ) { // iOS8
+                self.imagePickerController.popoverPresentationController.sourceView = self.delegate.view;
+            }
+
+            dispatch_async(dispatch_get_main_queue(), ^ {
+                [self.popoverController presentPopoverFromRect:CGRectMake(400, 400, 100, 100) inView:self.delegate.view permittedArrowDirections:UIPopoverArrowDirectionAny animated:YES];
+            });
+
             /*
             if (self.showFromBarButtonItem) {
                 [self.popoverController presentPopoverFromBarButtonItem:self.showFromBarButtonItem permittedArrowDirections:UIPopoverArrowDirectionAny animated:YES];
@@ -212,7 +217,6 @@
                 [self.popoverController presentPopoverFromRect:self.showFromRect inView:self.showFromViewController.view permittedArrowDirections:UIPopoverArrowDirectionAny animated:YES];
             }
              */
-            
         } else {
             [self.delegate presentViewController:self.imagePickerController animated:YES completion:nil];
         }
@@ -263,7 +267,7 @@
 
 - (void)chooseMedia
 {
-	NSString *cancelButton = NSLocalizedString(@"Cancel", nil);
+    NSString *cancelButton = NSLocalizedString(@"Cancel", nil);
     
     NSString *mediaTypeString = @"photo or video";
     if ((self.mediaType & CRMediaPickerControllerMediaTypeImage) && !(self.mediaType & CRMediaPickerControllerMediaTypeVideo)) {
@@ -275,10 +279,7 @@
     NSString *lastTakenLocalizedString = [NSString stringWithFormat:@"Last %@ taken", mediaTypeString];
     
     NSString *lastTakenButton = NSLocalizedString(lastTakenLocalizedString, nil);
-    
-	NSString *photoLibraryButton = NSLocalizedString(@"Photo Library", nil);
-	NSString *savedPhotosButton = NSLocalizedString(@"Saved Photos", nil);
-	NSString *cameraButton = NSLocalizedString(@"Camera", nil);
+        NSString *photoLibraryButton = NSLocalizedString(@"Photo Library", nil);    NSString *savedPhotosButton = NSLocalizedString(@"Saved Photos", nil);    NSString *cameraButton = NSLocalizedString(@"Camera", nil);
     
     UIActionSheet *actionSheet = [[UIActionSheet alloc] initWithTitle:nil
                                                              delegate:self
@@ -395,8 +396,7 @@
 #pragma mark - UIActionSheetDelegate
 
 - (void)actionSheet:(UIActionSheet *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex
-{
-	UIImagePickerControllerSourceType sourceType = UIImagePickerControllerSourceTypePhotoLibrary;
+{    UIImagePickerControllerSourceType sourceType = UIImagePickerControllerSourceTypePhotoLibrary;
     
     NSString *buttonTitle = [actionSheet buttonTitleAtIndex:buttonIndex];
     
